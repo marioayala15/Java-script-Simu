@@ -1,8 +1,3 @@
-function randomChoice(arr) {
-    return arr[Math.floor(arr.length * Math.random())];
-}
-
-
 function Particle (radius, x,y) {
   this.radius = radius;
   this.color = "#0000ff";
