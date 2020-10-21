@@ -1,8 +1,15 @@
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
+
+//Model parameters
+var alpha = 5;
+
+
+
+//Dispplay parameters
 var radius = 10;
-var numParticles = 1;
+var numParticles = 20;
 var particle;
 
 window.onload = init;
@@ -17,22 +24,18 @@ function init() {
 		particle.draw(context);
 		particles.push(particle);
 	}
-	setInterval(onEachStep, 1000/60); // 60 fps
+	setInterval(onEachStep, 1000/10000); // 60 fps
 };
 
 
 function onEachStep() {
 	context.clearRect(0, 0, canvas.width, canvas.height);
-	for (var i=0; i<numParticles; i++){
-		var particle = particles[i];
-    particle.move(context);
-
-		if (particle.y > canvas.height - radius){
-			particle.y = canvas.height - radius;
-		}
-		if (particle.x > canvas.width + radius){
-			particle.x = -radius;
-		}
+	var index = Math.floor(numParticles * Math.random());
+	var particle = particles[index];
+	particle.move(context);
+	
+	for (i=0; i< numParticles; i++){
+		var particle =particles[i];
 		particle.draw(context);
 	}
 };

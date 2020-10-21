@@ -17,4 +17,15 @@ Particle.prototype.draw = function (context) {
 
 Particle.prototype.move = function(context){
   this.x += randomChoice([-1,1]);
+  if (this.x > canvas.width + radius){
+    this.x = -radius;
+  }
+
+  if (this.y > canvas.height - radius){
+    this.y = canvas.height - radius;
+  }
+};
+
+Particle.prototype.rwclock= function(context,alpha){
+  this.clock=randomExp(alpha)
 };
